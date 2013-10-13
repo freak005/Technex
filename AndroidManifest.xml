@@ -6,7 +6,7 @@
 	<application android:icon="@drawable/icon" 
 	    android:label="@string/app_name"
 		android:debuggable="true">
-		<activity android:name=".Example" 
+		<activity android:name=".Tech_title" 
 		    android:label="@string/app_name"
 		    android:configChanges="keyboardHidden">
 			<intent-filter>
