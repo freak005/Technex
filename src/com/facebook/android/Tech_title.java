@@ -38,6 +38,7 @@ import com.facebook.android.SessionEvents.AuthListener;
 import com.facebook.android.SessionEvents.LogoutListener;
 
 
+
 public class Tech_title extends Activity {
 
     // Your Facebook Application ID must be set before running this example
@@ -46,11 +47,12 @@ public class Tech_title extends Activity {
 
     private LoginButton mLoginButton;
     private TextView mText;
-    private TextView suggestion;
+   
     private Button mRequestButton;
     private Button mPostButton;
     private Button mDeleteButton;
     private Button mUploadButton;
+    private Button mfriend;
 
     private Facebook mFacebook;
     private AsyncFacebookRunner mAsyncRunner;
@@ -85,6 +87,16 @@ public class Tech_title extends Activity {
         mRequestButton.setVisibility(mFacebook.isSessionValid() ?
                 View.VISIBLE :
                 View.INVISIBLE);
+        
+        mfriend.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent2 = new Intent(Tech_title.this, FriendPickerSampleActivity.class);
+				startActivity(intent2);
+			}
+		});
 
         mUploadButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
@@ -117,6 +129,11 @@ public class Tech_title extends Activity {
                         new SampleUploadListener(), null);
             }
         });
+        
+        mfriend.setVisibility(mFacebook.isSessionValid() ?
+                View.VISIBLE :
+                View.INVISIBLE);
+        
         mUploadButton.setVisibility(mFacebook.isSessionValid() ?
                 View.VISIBLE :
                 View.INVISIBLE);
@@ -141,6 +158,7 @@ public class Tech_title extends Activity {
         mPostButton = (Button) findViewById(R.id.postButton);
         mDeleteButton = (Button) findViewById(R.id.deletePostButton);
         mUploadButton = (Button) findViewById(R.id.uploadButton);
+        mfriend = (Button)findViewById(R.id.friend);
 	}
 
 	@Override
@@ -156,6 +174,7 @@ public class Tech_title extends Activity {
             mRequestButton.setVisibility(View.VISIBLE);
             mUploadButton.setVisibility(View.VISIBLE);
             mPostButton.setVisibility(View.VISIBLE);
+            mfriend.setVisibility(View.VISIBLE);
         }
 
         public void onAuthFail(String error) {
@@ -173,6 +192,7 @@ public class Tech_title extends Activity {
             mRequestButton.setVisibility(View.INVISIBLE);
             mUploadButton.setVisibility(View.INVISIBLE);
             mPostButton.setVisibility(View.INVISIBLE);
+            mfriend.setVisibility(View.INVISIBLE);
         }
     }
 
